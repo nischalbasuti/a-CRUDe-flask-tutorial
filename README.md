@@ -7,7 +7,7 @@ This tutorial assumes a basic understanding of Python, and to an extent SQL.
 It is also assumed that you have Python and pip installed on your system.
 
 ## Contents
-- [Getting Started] (#getting-started)
+- [Getting Started](#getting-started)
 
 ## Getting Started
 
