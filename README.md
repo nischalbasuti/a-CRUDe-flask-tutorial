@@ -11,6 +11,16 @@ It is also assumed that you have Python and pip installed on your system.
 
 ## Getting Started
 
+### Project Structure
+```sh
+-demo/
+|-env/ *generate with virtualenv*
+|-templates/ *contains html file templates*
+|-static/ *static files to be served*
+|-app.py
+|-database.db
+```
+
 ### Setting up virtualenv (optional)
 ```sh
 pip install virtualenv
@@ -29,3 +39,9 @@ pip install flask
 ```
 
 ### Initialize Database
+```sh
+sqlite3 database.db
+```
+```sh
+sqlite> create table student(rollno integer primary key, name text, grade text);
+```
