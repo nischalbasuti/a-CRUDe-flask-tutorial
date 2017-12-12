@@ -16,7 +16,10 @@ It is also assumed that you have Python and pip installed on your system.
 -demo/
 |-env/ *generate with virtualenv*
 |-templates/ *contains html file templates*
+||-index.html
 |-static/ *static files to be served*
+||-style.css
+||-index.js
 |-app.py
 |-database.db
 ```
