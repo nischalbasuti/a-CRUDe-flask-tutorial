@@ -9,6 +9,55 @@
         <input type="text" name="name" id="name" placeholder="name" /><br>
         <input type="text" name="rollno" id="rollno" placeholder="rollno" /><br>
         <input type="text" name="grade" id="grade" placeholder="grade" /><br>
-        <input type="button" name="submit" id="submit" value="submit" />
+
+        <input type="button" name="get" id="get" value="get" />
+        <input type="button" name="post" id="post" value="post" />
+
+        <hr>
+        <div id='student_info'></div>
+
+        <script>
+            // need to write JavaScript stuff here
+            var getButton = document.getElementById('get');
+            getButton.onclick = getStudent
+
+            var postButton = document.getElementById('post');
+            postButton.onclick = postStudent
+
+            
+            function getStudent(){
+                var rollno = document.getElementById('rollno').value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xhttp.open("GET", "student?rollno="+rollno, "true");
+                xhttp.send();
+            }
+
+            function postStudent(){
+                var rollno = document.getElementById('rollno').value;
+                var name = document.getElementById('name').value;
+                var grade = document.getElementById('grade').value;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xhttp.open("post", "student", "true");
+                xhttp.setRequestHeader('Content-Type', "application/json");
+
+                var data = {
+                    name: name,
+                    rollno: rollno,
+                    grade: grade
+                };
+                xhttp.send(JSON.stringify(data));
+            }
+        </script>
     </body>
 </html>

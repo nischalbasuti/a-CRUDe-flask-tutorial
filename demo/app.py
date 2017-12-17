@@ -1,12 +1,15 @@
-from flask import Flask, request, session, redirect, url_for, abort, render_template, flash
+from flask import Flask, render_template
 from flask_restful import Resource, Api, reqparse
 from flask_sqlalchemy import SQLAlchemy
 
-# Create application instance
+## Create application instance
+#
 app = Flask(__name__)
-app.config['SQLALCHEMY_ECHO'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/test' 
+
+## Application configurations for SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/test' # this is the only one that is absolutly necessary, the rest just makes life much easier
+app.config['SQLALCHEMY_ECHO'] = True # show error messages
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # reduce overhead
 
 # Create api instance
 api = Api(app)
@@ -54,6 +57,9 @@ class Student_Endpoint(Resource):
         parser.add_argument('rollno')
         rollno = parser.parse_args()['rollno']
 
+        print("************************************")
+        print(str(rollno))
+        print("************************************")
         return Student.query.filter_by(rollno = rollno).first().to_dict()
 
     def post(self):
